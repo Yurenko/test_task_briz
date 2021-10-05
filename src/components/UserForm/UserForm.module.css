@@ -1,0 +1,48 @@
+.form {
+    margin: 20px 0;
+    width: 100%;
+    display: block;
+}
+
+.input {
+    width: 95%;
+    height: 100%;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 17px;
+    padding-left: 15px;
+    margin: 10px auto 15px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:not(:focus):not(:placeholder-shown):invalid {
+    border-color: red;
+}
+
+input:not(:focus):not(:placeholder-shown):valid {
+    border-color: black;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    color: #fff;
+    font-size: 21px;
+    outline: none;
+    background: #8E49E8;
+    cursor: pointer;
+    border-radius: 3px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: #721ce3;
+}
