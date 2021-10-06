@@ -19,13 +19,23 @@ function App() {
   const [currentUser, setCurrentUser] = useState<Users>({ id: null, name: '', number: '' });
 
   useEffect(() => {
-    Promise.resolve([
-      { id: 1, name: 'Yura', number: '87834' },
-      { id: 2, name: 'Vova', number: '546756967' },
-    ]).then(res => setUsers(res))
+    const item = localStorage.getItem('contactUsers');
+    if (item) {
+      if (typeof item === 'string') {
+        const initialValue = JSON.parse(item);
+        setUsers(initialValue)
+      }
+    } else {
+      Promise.resolve([
+        { id: 1, name: 'Yura', number: '87834' },
+        { id: 2, name: 'Vova', number: '546756967' },
+      ]).then(res => setUsers(res))
+    }
   }, [])
 
-  // Можно еще добавлять в LocalStorage если это необходимо
+  useEffect(() => {
+    localStorage.setItem('contactUsers', JSON.stringify(users))
+  }, [users])
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
